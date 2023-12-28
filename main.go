@@ -27,7 +27,7 @@ type Training struct {
 // Формула расчета:
 // количество_повторов * длина_шага / м_в_км
 func (t Training) distance() float64 {
-	return float64(t.Action) * LenStep / MInKm
+	return float64(t.Action) * t.LenStep / MInKm
 }
 
 // meanSpeed возвращает среднюю скорость бега или ходьбы в КМ\Ч.
@@ -158,7 +158,7 @@ func (s Swimming) meanSpeed() float64 {
 		return 0
 	}
 
-	return float64(s.LengthPool*s.CountPool/MInKm) / s.Duration.Hours()
+	return float64(s.LengthPool*s.CountPool) / MInKm / s.Duration.Hours()
 }
 
 // Calories возвращает количество калорий, потраченных при плавании.
